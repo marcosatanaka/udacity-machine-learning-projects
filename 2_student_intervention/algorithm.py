@@ -131,8 +131,8 @@ def train_predict(clf, X_train, y_train, X_test, y_test):
 	train_classifier(clf, X_train, y_train)
 
 	# Imprime os resultados das estimativas de ambos treinamento e teste
-	print "Pontuação F1 para o conjunto de treino: {:.4f}.".format(predict_labels(clf, X_train, y_train, False))
-	print "Pontuação F1 para o conjunto de teste: {:.4f}.".format(predict_labels(clf, X_test, y_test, True))
+	print "Pontuação F1 para o conjunto de treino: {:.4f}.".format(predict_labels(clf, X_train, y_train))
+	print "Pontuação F1 para o conjunto de teste: {:.4f}.".format(predict_labels(clf, X_test, y_test))
 
 
 # TODO: Importe os três modelos de aprendizagem supervisionada do sklearn
