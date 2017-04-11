@@ -11800,7 +11800,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Importar bibliotecas</span>
@@ -11808,6 +11808,7 @@ div#notebook {
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
 
 <span class="c1"># Ler os dados dos estudantes</span>
 <span class="n">student_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;student-data.csv&quot;</span><span class="p">)</span>
@@ -11852,7 +11853,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Calcule o número de estudante</span>
@@ -11868,7 +11869,7 @@ div#notebook {
 <span class="n">n_failed</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">student_data</span><span class="p">[</span><span class="s1">&#39;passed&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;no&#39;</span><span class="p">])</span>
 
 <span class="c1"># TODO: Calcule a taxa de graduação</span>
-<span class="n">grad_rate</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">n_passed</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_students</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">grad_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_passed</span> <span class="o">/</span> <span class="n">n_students</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
 
 <span class="c1"># Imprima os resultados</span>
 <span class="k">print</span> <span class="s2">&quot;Número total de estudantes: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_students</span><span class="p">)</span>
@@ -11915,7 +11916,7 @@ Taxa de graduação: 67.09%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Extraia as colunas dos atributo</span>
@@ -11997,7 +11998,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_features</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -12068,14 +12069,14 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Importe qualquer funcionalidade adicional de que você possa precisar aqui</span>
 <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
 <span class="c1"># TODO: Embaralhe e distribua o conjunto de dados de acordo com o número de pontos de treinamento e teste abaixo</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.24</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.24</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_all</span><span class="p">)</span>
 
 <span class="c1"># Mostre o resultado da distribuição</span>
 <span class="k">print</span> <span class="s2">&quot;O conjunto de treinamento tem {} amostras.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -12186,7 +12187,7 @@ O conjunto de teste tem 95 amostras.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">train_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">):</span>
@@ -12259,7 +12260,7 @@ O conjunto de teste tem 95 amostras.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[99]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Importe os três modelos de aprendizagem supervisionada do sklearn</span>
@@ -12272,22 +12273,11 @@ O conjunto de teste tem 95 amostras.
 <span class="n">clf_B</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">clf_C</span> <span class="o">=</span> <span class="n">AdaBoostClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="c1"># TODO: Configure os tamanho dos conjuntos de treinamento</span>
-<span class="n">X_train_100</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span>
-<span class="n">y_train_100</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span>
-
-<span class="n">X_train_200</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">200</span><span class="p">]</span>
-<span class="n">y_train_200</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">200</span><span class="p">]</span>
-
-<span class="n">X_train_300</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">300</span><span class="p">]</span>
-<span class="n">y_train_300</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">300</span><span class="p">]</span>
-
-<span class="c1"># TODO: Executar a função &#39;train_predict&#39; para cada classificador e cada tamanho de conjunto de treinamento</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_C</span><span class="p">,</span> <span class="n">X_train_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="k">print</span> <span class="s2">&quot;&quot;</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_C</span><span class="p">,</span> <span class="n">X_train_200</span><span class="p">,</span> <span class="n">y_train_200</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="k">print</span> <span class="s2">&quot;&quot;</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_C</span><span class="p">,</span> <span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">clf</span> <span class="ow">in</span> <span class="p">[</span><span class="n">clf_A</span><span class="p">,</span> <span class="n">clf_B</span><span class="p">,</span> <span class="n">clf_C</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">]:</span>
+        <span class="n">train_predict</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">[:</span><span class="n">size</span><span class="p">],</span> <span class="n">y_train</span><span class="p">[:</span><span class="n">size</span><span class="p">],</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">print</span> <span class="s1">&#39;=&#39;</span> <span class="o">*</span> <span class="mi">80</span> <span class="c1"># separacao entre classificadores</span>
 </pre></div>
 
 </div>
@@ -12300,26 +12290,72 @@ O conjunto de teste tem 95 amostras.
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Treinando um AdaBoostClassifier com 100 pontos de treinamento. . .
-O modelo foi treinado em 0.1407 segundos
+<pre>Treinando um GaussianNB com 100 pontos de treinamento. . .
+O modelo foi treinado em 0.0030 segundos
+As previsões foram feitas em 0.0007 segundos.
+Pontuação F1 para o conjunto de treino: 0.7966.
+As previsões foram feitas em 0.0006 segundos.
+Pontuação F1 para o conjunto de teste: 0.6379.
+
+Treinando um GaussianNB com 200 pontos de treinamento. . .
+O modelo foi treinado em 0.0009 segundos
+As previsões foram feitas em 0.0004 segundos.
+Pontuação F1 para o conjunto de treino: 0.8148.
+As previsões foram feitas em 0.0003 segundos.
+Pontuação F1 para o conjunto de teste: 0.7344.
+
+Treinando um GaussianNB com 300 pontos de treinamento. . .
+O modelo foi treinado em 0.0017 segundos
+As previsões foram feitas em 0.0006 segundos.
+Pontuação F1 para o conjunto de treino: 0.8190.
+As previsões foram feitas em 0.0003 segundos.
+Pontuação F1 para o conjunto de teste: 0.7500.
+
+================================================================================
+Treinando um SVC com 100 pontos de treinamento. . .
+O modelo foi treinado em 0.0061 segundos
+As previsões foram feitas em 0.0017 segundos.
+Pontuação F1 para o conjunto de treino: 0.8707.
+As previsões foram feitas em 0.0009 segundos.
+Pontuação F1 para o conjunto de teste: 0.8000.
+
+Treinando um SVC com 200 pontos de treinamento. . .
+O modelo foi treinado em 0.0036 segundos
+As previsões foram feitas em 0.0026 segundos.
+Pontuação F1 para o conjunto de treino: 0.8491.
+As previsões foram feitas em 0.0013 segundos.
+Pontuação F1 para o conjunto de teste: 0.8026.
+
+Treinando um SVC com 300 pontos de treinamento. . .
+O modelo foi treinado em 0.0074 segundos
+As previsões foram feitas em 0.0052 segundos.
+Pontuação F1 para o conjunto de treino: 0.8701.
+As previsões foram feitas em 0.0018 segundos.
+Pontuação F1 para o conjunto de teste: 0.8026.
+
+================================================================================
+Treinando um AdaBoostClassifier com 100 pontos de treinamento. . .
+O modelo foi treinado em 0.1240 segundos
+As previsões foram feitas em 0.0055 segundos.
+Pontuação F1 para o conjunto de treino: 0.9846.
 As previsões foram feitas em 0.0054 segundos.
-Pontuação F1 para o conjunto de treino: 0.9577.
-As previsões foram feitas em 0.0053 segundos.
-Pontuação F1 para o conjunto de teste: 0.7519.
+Pontuação F1 para o conjunto de teste: 0.6560.
 
 Treinando um AdaBoostClassifier com 200 pontos de treinamento. . .
-O modelo foi treinado em 0.1397 segundos
-As previsões foram feitas em 0.0073 segundos.
-Pontuação F1 para o conjunto de treino: 0.9117.
+O modelo foi treinado em 0.1399 segundos
+As previsões foram feitas em 0.0065 segundos.
+Pontuação F1 para o conjunto de treino: 0.8832.
 As previsões foram feitas em 0.0054 segundos.
-Pontuação F1 para o conjunto de teste: 0.6970.
+Pontuação F1 para o conjunto de teste: 0.7007.
 
 Treinando um AdaBoostClassifier com 300 pontos de treinamento. . .
-O modelo foi treinado em 0.1346 segundos
-As previsões foram feitas em 0.0068 segundos.
-Pontuação F1 para o conjunto de treino: 0.8768.
-As previsões foram feitas em 0.0053 segundos.
-Pontuação F1 para o conjunto de teste: 0.7353.
+O modelo foi treinado em 0.1332 segundos
+As previsões foram feitas em 0.0070 segundos.
+Pontuação F1 para o conjunto de treino: 0.8821.
+As previsões foram feitas em 0.0054 segundos.
+Pontuação F1 para o conjunto de teste: 0.7536.
+
+================================================================================
 </pre>
 </div>
 </div>
@@ -12356,24 +12392,24 @@ Pontuação F1 para o conjunto de teste: 0.7353.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0024s</td>
-<td style="text-align:center">0.0009s</td>
-<td style="text-align:center">0.2308</td>
-<td style="text-align:center">0.2933</td>
+<td style="text-align:center">0.0020s</td>
+<td style="text-align:center">0.0010s</td>
+<td style="text-align:center">0.7966</td>
+<td style="text-align:center">0.6379</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
+<td style="text-align:center">0.0020s</td>
 <td style="text-align:center">0.0010s</td>
-<td style="text-align:center">0.0004s</td>
-<td style="text-align:center">0.7883</td>
-<td style="text-align:center">0.7385</td>
+<td style="text-align:center">0.8148</td>
+<td style="text-align:center">0.7344</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0059s</td>
-<td style="text-align:center">0.0005s</td>
-<td style="text-align:center">0.8000</td>
-<td style="text-align:center">0.7591</td>
+<td style="text-align:center">0.0020s</td>
+<td style="text-align:center">0.0010s</td>
+<td style="text-align:center">0.8190</td>
+<td style="text-align:center">0.7500</td>
 </tr>
 </tbody>
 </table>
@@ -12390,24 +12426,24 @@ Pontuação F1 para o conjunto de teste: 0.7353.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0029s</td>
-<td style="text-align:center">0.0016s</td>
-<td style="text-align:center">0.8625</td>
-<td style="text-align:center">0.7898</td>
+<td style="text-align:center">0.0040s</td>
+<td style="text-align:center">0.0030s</td>
+<td style="text-align:center">0.8707</td>
+<td style="text-align:center">0.8000</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0071s</td>
-<td style="text-align:center">0.0014s</td>
-<td style="text-align:center">0.8831</td>
-<td style="text-align:center">0.7947</td>
+<td style="text-align:center">0.0080s</td>
+<td style="text-align:center">0.0020s</td>
+<td style="text-align:center">0.8491</td>
+<td style="text-align:center">0.8026</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0086s</td>
-<td style="text-align:center">0.0019s</td>
-<td style="text-align:center">0.9018</td>
-<td style="text-align:center">0.7586</td>
+<td style="text-align:center">0.0100s</td>
+<td style="text-align:center">0.0020s</td>
+<td style="text-align:center">0.8701</td>
+<td style="text-align:center">0.8026</td>
 </tr>
 </tbody>
 </table>
@@ -12424,24 +12460,24 @@ Pontuação F1 para o conjunto de teste: 0.7353.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.1407s</td>
-<td style="text-align:center">0.0053s</td>
-<td style="text-align:center">0.9577</td>
-<td style="text-align:center">0.7519</td>
+<td style="text-align:center">0.1220s</td>
+<td style="text-align:center">0.0120s</td>
+<td style="text-align:center">0.9846</td>
+<td style="text-align:center">0.6560</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.1426s</td>
-<td style="text-align:center">0.0053s</td>
-<td style="text-align:center">0.9117</td>
-<td style="text-align:center">0.6970</td>
+<td style="text-align:center">0.1320s</td>
+<td style="text-align:center">0.0060s</td>
+<td style="text-align:center">0.8832</td>
+<td style="text-align:center">0.7007</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.1342s</td>
-<td style="text-align:center">0.0057s</td>
-<td style="text-align:center">0.8768</td>
-<td style="text-align:center">0.7353</td>
+<td style="text-align:center">0.1520s</td>
+<td style="text-align:center">0.0050s</td>
+<td style="text-align:center">0.8821</td>
+<td style="text-align:center">0.7536</td>
 </tr>
 </tbody>
 </table>
@@ -12474,10 +12510,10 @@ Pontuação F1 para o conjunto de teste: 0.7353.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Resposta: </strong>Com relação aos três modelos que escolhi, o que obteve melhor pontuação F1 no conjunto de teste foi o GaussianNB. Também testei outros 3 disponíveis além daqueles que escolhi aqui: DecisionTree, KNN e SGDC.</p>
-<p>Com relação ao tempo de treinamento, o que se destacou com um alto valor foi o AdaBoost, confirmando as suspeitas que levantei enquanto estudava seus pontos negativos. A diferença de tempo entre os outros não foi significativa.</p>
+<p><strong>Resposta: </strong>Comparando o GaussianNB, SVM e AdaBoost, o que obteve melhor desempenho foi o SVM. Um ponto interessante é que mesmo com menos dados de treino, o desempenho do SVM se manteve constante, demonstrando que ele conseguiu aprender com menos dados e que é menos sensível à uma mudanças nos dados de treino. Também testei outros 3 disponíveis além daqueles que escolhi aqui: DecisionTree, KNN e SGDC.</p>
+<p>Com relação ao tempo de treinamento, o que se destacou com um alto valor foi o AdaBoost, confirmando as suspeitas que levantei enquanto estudava seus pontos negativos. A diferença de tempo entre os outros não foi significativa. Um ponto interessante é que GaussianNB manteve tempo de treinamento constante com 100, 200 e 300 dados, diferentemente do SVM e AdaBoost, que tiveram um tempo de treinamento crescente de acordo com a quantidade de dados disponíveis.</p>
 <p>Com relação ao tempo de estimativa no conjunto de teste, não houveram diferenças significativas, contudo AdaBoost também levou mais tempo.</p>
-<p>Sobre a pontuação F1 no conjunto de teste, a maioria dos modelos chegou a uma pontuação próxima de 0.7. Os que mais se destacaram foram SVM e GaussianNB. Ambos tiveram resultados em torno de 0.75. A questão é que não vejo muitas formas de otimizar o GaussianNB com técnicas como GridSearch. Como não foram notadas diferenças significativas com relação ao tempo de treinamento e de teste entre eles, e tendo a possibilidade de obter melhores resultados através da otimização dos parâmetros, escolho o SVM como o melhor modelo.</p>
+<p>Sobre a pontuação F1 no conjunto de teste, a maioria dos modelos chegou a uma pontuação próxima de 0.7. O que mais se destacou foi o SVM, e como seu tempo de treinamento e teste não é muito grande com relação aos outros algoritmos utilizados, escolherei ele como o melhor modelo para esta tarefa.</p>
 
 </div>
 </div>
@@ -12497,7 +12533,11 @@ Pontuação F1 para o conjunto de teste: 0.7353.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Resposta: </strong>SVM classifica os dados procurando uma fronteira entre eles com base em suas características comuns. Ao mesmo, ele certifica-se de manter uma margem de segurança entre estas fronteiras, de forma que novos dados (diferentes daqueles utilizados para construir a fronteira) não sejam classificados de forma indevida. Ele é flexível o suficiente para desenhar tanto fronteiras simples (por exemplo, uma linha reta que divide duas classes de dados) quanto fronteiras complexas, o que nos permite utilizá-lo para resolver problemas em domínios complicados.</p>
+<p><strong>Resposta: </strong>SVM classifica os dados procurando uma fronteira entre eles com base em suas características comuns. Ao mesmo tempo, ele certifica-se de manter uma margem de segurança entre estas fronteiras, de forma que novos dados (diferentes daqueles utilizados para construir a fronteira) não sejam classificados de forma indevida. Abaixo vemos um exemplo de classificação e a margem de segurança entre as fronteiras:
+<img src="https://qph.ec.quoracdn.net/main-qimg-675fedee717331e478ecfcc40e2e4d38" alt="exemplo-fronteira.png">
+Ele é flexível o suficiente para desenhar tanto fronteiras simples (como por exemplo a imagem acima, onde uma linha reta divide duas classes de dados) quanto fronteiras complexas, o que nos permite utilizá-lo para resolver problemas em domínios complicados.
+<img src="http://www.eric-kim.net/eric-kim-net/posts/1/imgs/data_2d_to_3d.png" alt="exemplo-kernel-trick.png">
+Na imagem acima, no lado esquerdo vemos um domínio cuja fronteiras entre as diferentes classes não pode ser desenhada com uma linha reta. SVM trata esta situação transformando o domínio de forma a permitir que esta separação ocorra (lado direito).</p>
 
 </div>
 </div>
@@ -12528,7 +12568,7 @@ Pontuação F1 para o conjunto de teste: 0.7353.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[102]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Importe &#39;GridSearchCV&#39; e &#39;make_scorer&#39;</span>
@@ -12536,7 +12576,11 @@ Pontuação F1 para o conjunto de teste: 0.7353.
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span>
 
 <span class="c1"># TODO: Crie a lista de parâmetros que você gostaria de calibrar</span>
-<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;kernel&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;rbf&#39;</span><span class="p">),</span> <span class="s1">&#39;C&#39;</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">),</span> <span class="s1">&#39;gamma&#39;</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)}</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;linear&#39;</span><span class="p">],</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)},</span>
+    <span class="p">{</span><span class="s1">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;rbf&#39;</span><span class="p">],</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)},</span>
+    <span class="p">{</span><span class="s1">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">],</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="s1">&#39;coef0&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]}</span>
+<span class="p">]</span>
 
 <span class="c1"># TODO: Inicialize o classificador</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -12573,12 +12617,12 @@ Pontuação F1 para o conjunto de teste: 0.7353.
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Melhores parâmetros:
-{&#39;kernel&#39;: &#39;rbf&#39;, &#39;C&#39;: 0.95000000000000029, &#39;gamma&#39;: 0.10000000000000001}
+{&#39;kernel&#39;: &#39;rbf&#39;, &#39;C&#39;: 0.90000000000000002, &#39;gamma&#39;: 0.10000000000000001}
 
-As previsões foram feitas em 0.0070 segundos.
-O modelo calibrado tem F1 de 0.9712 no conjunto de treinamento.
-As previsões foram feitas em 0.0023 segundos.
-O modelo calibrado tem F1 de 0.8158 no conjunto de teste.
+As previsões foram feitas em 0.0069 segundos.
+O modelo calibrado tem F1 de 0.9710 no conjunto de treinamento.
+As previsões foram feitas em 0.0022 segundos.
+O modelo calibrado tem F1 de 0.8153 no conjunto de teste.
 </pre>
 </div>
 </div>
@@ -12613,14 +12657,14 @@ O modelo calibrado tem F1 de 0.8158 no conjunto de teste.
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">0.9018</td>
-<td style="text-align:center">0.7353</td>
-<td style="text-align:center">0.9712</td>
-<td style="text-align:center">0.8158</td>
+<td style="text-align:center">0.8701</td>
+<td style="text-align:center">0.8026</td>
+<td style="text-align:center">0.9710</td>
+<td style="text-align:center">0.8153</td>
 </tr>
 </tbody>
 </table>
-<p>Foi verificado que a pontuação melhorou em ambos os casos (treinamento e teste).</p>
+<p>É interessante notar que após a calibragem do modelo utilizando GridSearch, o score no treinamento chegou a quase 1.0 (um aumento de 0.1009), enquanto que o score no teste aumentou apenas 0.0127. Isto demonstra um baixo viés, pois temos poucos erros no conjunto de treinamento, porém pode ser um indício de que o modelo esteja muito ajustado ao dados com que foi treinado, dado que a melhora do score no conjunto de teste não foi tão significativa quanto à melhora no conjunto de treinamento.</p>
 
 </div>
 </div>

@@ -3,6 +3,7 @@
 # Este é um problema de classificação, pois estamos classificando os alunos em duas categorias: aqueles que precisam de intervenção antecipada antes de serem reprovados, e aqueles que não precisam. Um problema de regressão possui apenas uma saída contínua, um número, e nestes tipos de problema, tentamos encontrar a linha que melhor descreve o padrão dos dados que estamos vendo.
 
 # Importar bibliotecas
+from __future__ import division
 import numpy as np
 import pandas as pd
 from time import time
@@ -27,7 +28,7 @@ n_passed = len(student_data.loc[student_data['passed'] == 'yes'])
 n_failed = len(student_data.loc[student_data['passed'] == 'no'])
 
 # TODO: Calcule a taxa de graduacao
-grad_rate = float(n_passed) / n_students
+grad_rate = (n_passed / n_students) * 100
 
 # Imprima os resultados
 # print "Numero total de estudantes: {}".format(n_students)
@@ -91,7 +92,7 @@ X_all = preprocess_features(X_all)
 from sklearn.cross_validation import train_test_split
 
 # TODO: Embaralhe e distribua o conjunto de dados de acordo com o número de pontos de treinamento e teste abaixo
-X_train, X_test, y_train, y_test = train_test_split(X_all, y_all, test_size=0.24)
+X_train, X_test, y_train, y_test = train_test_split(X_all, y_all, test_size=0.24, random_state=1, stratify=y_all)
 
 # Mostre o resultado da distribuição
 print "O conjunto de treinamento tem {} amostras.".format(X_train.shape[0])
@@ -107,7 +108,7 @@ def train_classifier(clf, X_train, y_train):
 	end = time()
 
 	# Imprime os resultados
-	print "[{:.4f}s]".format(end - start)
+	print "O modelo foi treinado em {:.4f} segundos".format(end - start)
 
 def predict_labels(clf, features, target):
 	''' Faz uma estimativa utilizando um classificador ajustado baseado na pontuação F1. '''
@@ -118,7 +119,7 @@ def predict_labels(clf, features, target):
 	end = time()
 
 	# Imprime os resultados de retorno
-	print "[{:.4f}s]".format(end - start)
+	print "O modelo foi treinado em {:.4f} segundos".format(end - start)
 	return f1_score(target.values, y_pred, pos_label='yes')
 
 def train_predict(clf, X_train, y_train, X_test, y_test):
@@ -151,78 +152,13 @@ clf_D = DecisionTreeClassifier(random_state=1)
 clf_E = KNeighborsClassifier()
 clf_F = SGDClassifier(random_state=1)
 
-# TODO: Configure os tamanho dos conjuntos de treinamento
-X_train_100 = X_train[0:100]
-y_train_100 = y_train[0:100]
-
-X_train_200 = X_train[0:200]
-y_train_200 = y_train[0:200]
-
-X_train_300 = X_train[0:300]
-y_train_300 = y_train[0:300]
-
 # TODO: Executar a função 'train_predict' para cada classificador e cada tamanho de conjunto de treinamento
-'''
 print ""
-train_predict(clf_A, X_train_100, y_train_100, X_test, y_test)
-print ""
-train_predict(clf_A, X_train_200, y_train_200, X_test, y_test)
-print ""
-train_predict(clf_A, X_train_300, y_train_300, X_test, y_test)
-print ""
-
-print ""
-
-print ""
-train_predict(clf_B, X_train_100, y_train_100, X_test, y_test)
-print ""
-train_predict(clf_B, X_train_200, y_train_200, X_test, y_test)
-print ""
-train_predict(clf_B, X_train_300, y_train_300, X_test, y_test)
-print ""
-
-print ""
-
-print ""
-train_predict(clf_C, X_train_100, y_train_100, X_test, y_test)
-print ""
-train_predict(clf_C, X_train_200, y_train_200, X_test, y_test)
-print ""
-train_predict(clf_C, X_train_300, y_train_300, X_test, y_test)
-print ""
-
-print ""
-
-print ""
-train_predict(clf_D, X_train_100, y_train_100, X_test, y_test)
-print ""
-train_predict(clf_D, X_train_200, y_train_200, X_test, y_test)
-print ""
-train_predict(clf_D, X_train_300, y_train_300, X_test, y_test)
-print ""
-
-print ""
-
-print ""
-train_predict(clf_E, X_train_100, y_train_100, X_test, y_test)
-print ""
-train_predict(clf_E, X_train_200, y_train_200, X_test, y_test)
-print ""
-train_predict(clf_E, X_train_300, y_train_300, X_test, y_test)
-print ""
-
-print ""
-
-print ""
-train_predict(clf_F, X_train_100, y_train_100, X_test, y_test)
-print ""
-train_predict(clf_F, X_train_200, y_train_200, X_test, y_test)
-print ""
-train_predict(clf_F, X_train_300, y_train_300, X_test, y_test)
-print ""
-
-print ""
-'''
+for clf in [clf_A, clf_B, clf_C, clf_D, clf_E, clf_F]:
+	for size in [100, 200, 300]:
+		train_predict(clf, X_train[:size], y_train[:size], X_test, y_test)
+		print ""
+	print '=' * 80 # separacao entre classificadores
 
 
 # TODO: Importe 'GridSearchCV' e 'make_scorer'
@@ -230,7 +166,11 @@ from sklearn.grid_search import GridSearchCV
 from sklearn.metrics import make_scorer
 
 # TODO: Crie a lista de parâmetros que você gostaria de calibrar
-parameters = {'kernel' : ('linear', 'rbf'), 'C' : np.arange(0.1, 1, 0.1), 'gamma' : ['auto', 0, 0.5, 1.0, 1.5, 2.0]}
+parameters = [
+			  {'kernel': ['linear'], 'C': np.arange(0.1, 1, 0.1)},
+			  {'kernel': ['rbf'], 'C': np.arange(0.1, 1, 0.1), 'gamma': np.arange(0.1, 1, 0.1)},
+			  {'kernel': ['sigmoid'], 'C': np.arange(0.1, 1, 0.1), 'gamma': np.arange(0.1, 1, 0.1), 'coef0': [0, 1, 2, 3, 4, 5]}
+			  ]
 
 # TODO: Inicialize o classificador
 clf = SVC(random_state=1)
